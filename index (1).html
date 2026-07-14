@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chim Thị Phương Duy - Portfolio</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #e6f0fa;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --text-muted: #6c757d;
+            --accent-color: #d0e1fd;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--white) 0%, var(--accent-color) 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .objective {
+            font-style: italic;
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            color: var(--text-dark);
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0, 86, 179, 0.1);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+        .info-list strong {
+            color: var(--primary-color);
+        }
+
+        .info-list a {
+            color: var(--text-dark);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .info-list a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .timeline-item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--accent-color);
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 5px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .timeline-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .timeline-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .timeline-desc {
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .work-img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            border: 1px solid var(--accent-color);
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 86, 179, 0.15);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--accent-color);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="profile-container">
+            <!-- Ảnh chân dung làm ảnh đại diện website -->
+            <img class="avatar" src="input_file_4.png" alt="Chim Thị Phương Duy">
+            <h1>Chim Thị Phương Duy</h1>
+            <div class="subtitle">Cử nhân Toán ứng dụng</div>
+            <p class="objective">
+                Mong muốn có thể truyền đạt những kiến thức đến các em học sinh, trau dồi thêm kinh nghiệm đứng lớp, soạn thảo giáo án, giao tiếp, giảng dạy cho bản thân và cố gắng học hỏi từ những thầy cô đồng nghiệp đi trước để nâng cao kĩ năng.
+            </p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Cột trái (Sidebar) -->
+        <div class="sidebar">
+            <!-- Thông tin cá nhân -->
+            <div class="card">
+                <h2 class="card-title">Thông Tin Cá Nhân</h2>
+                <ul class="info-list">
+                    <li><strong>Ngày sinh:</strong> 30/09/2000</li>
+                    <li><strong>Giới tính:</strong> Nữ</li>
+                    <li><strong>Địa chỉ:</strong> 45/1, khu vực 1, phường An Bình, TP Cần Thơ</li>
+                    <li><strong>Số điện thoại:</strong> <a href="tel:0912084755">0912084755</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:chimduy2000@gmail.com">chimduy2000@gmail.com</a></li>
+                    <li><strong>Facebook:</strong> <a href="https://www.facebook.com/phuongduy.ct" target="_blank">phuongduy.ct</a></li>
+                </ul>
+            </div>
+
+            <!-- Kỹ năng & Sở thích -->
+            <div class="card">
+                <h2 class="card-title">Kỹ Năng</h2>
+                <div class="skills-container" style="margin-bottom: 20px;">
+                    <span class="skill-tag">Tin học văn phòng</span>
+                    <span class="skill-tag">Giao tiếp ngoại ngữ</span>
+                </div>
+                
+                <h2 class="card-title" style="font-size: 1.1rem; margin-top: 15px;">Sở Thích</h2>
+                <div class="skills-container">
+                    <span class="skill-tag" style="background-color: #f0f4f8; color: #555;">Thể thao</span>
+                    <span class="skill-tag" style="background-color: #f0f4f8; color: #555;">Xem phim</span>
+                    <span class="skill-tag" style="background-color: #f0f4f8; color: #555;">Du lịch</span>
+                </div>
+            </div>
+
+            <!-- Chứng chỉ -->
+            <div class="card">
+                <h2 class="card-title">Chứng Chỉ</h2>
+                <div class="timeline-item" style="margin-bottom: 12px;">
+                    <div class="timeline-date">06/2023 - 06/2024</div>
+                    <div class="timeline-desc" style="font-weight: 600;">Chứng chỉ nghiệp vụ sư phạm cấp THCS</div>
+                </div>
+                <div class="timeline-item" style="margin-bottom: 12px;">
+                    <div class="timeline-date">08/2025</div>
+                    <div class="timeline-desc" style="font-weight: 600;">Anh văn Vstep bậc B1</div>
+                </div>
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <div class="timeline-date">12/2020</div>
+                    <div class="timeline-desc" style="font-weight: 600;">Ứng dụng công nghệ thông tin cơ bản</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cột phải (Main Content) -->
+        <div class="main-content">
+            
+            <!-- Học vấn -->
+            <div class="card">
+                <h2 class="card-title">Học Vấn</h2>
+                <div class="timeline-item">
+                    <div class="timeline-date">2018 - 2022</div>
+                    <div class="timeline-title">ĐẠI HỌC CẦN THƠ</div>
+                    <div class="timeline-subtitle">Cử nhân Toán Ứng Dụng</div>
+                </div>
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-title">ĐẠI HỌC CẦN THƠ</div>
+                    <div class="timeline-subtitle">Thạc sĩ Toán ứng dụng K33</div>
+                </div>
+            </div>
+
+            <!-- Kinh nghiệm làm việc -->
+            <div class="card">
+                <h2 class="card-title">Kinh Nghiệm Làm Việc</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">9/2025 - 5/2026</div>
+                    <div class="timeline-title">Giáo viên hợp đồng Toán</div>
+                    <div class="timeline-subtitle">Trường THCS Hưng Phú</div>
+                    <div class="timeline-desc">Đứng lớp giảng dạy</div>
+                    <!-- Ảnh đính kèm lớp học -->
+                    <img class="work-img" src="input_file_1.png" alt="Giảng dạy tại Trường THCS Hưng Phú">
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Nay</div>
+                    <div class="timeline-title">Thu ngân</div>
+                    <div class="timeline-subtitle">Nhà hàng ISUSHI Vincom Xuân Khánh</div>
+                    <div class="timeline-desc">Phục vụ, thanh toán, kiểm kê tiền mỗi ca</div>
+                    <!-- Ảnh đính kèm tại nhà hàng -->
+                    <img class="work-img" style="max-height: 400px; object-fit: contain; background: #fafafa;" src="input_file_0.png" alt="Làm việc tại Nhà hàng ISUSHI Vincom Xuân Khánh">
+                </div>
+
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <div class="timeline-date">04/2023 - 01/2024</div>
+                    <div class="timeline-title">Giáo viên bộ môn Toán (Thực tập)</div>
+                    <div class="timeline-subtitle">Trường THCS Lê Bình</div>
+                    <div class="timeline-desc">Đứng lớp giảng dạy, tham gia công tác chủ nhiệm</div>
+                </div>
+            </div>
+
+            <!-- Hoạt động tình nguyện -->
+            <div class="card">
+                <h2 class="card-title">Hoạt Động / Tình Nguyện</h2>
+                <div class="timeline-item" style="margin-bottom: 0;">
+                    <div class="timeline-date">2019 - 2021</div>
+                    <div class="timeline-title">TIẾP SỨC MÙA THI</div>
+                    <div class="timeline-subtitle">Đại học Cần Thơ - Tình nguyện viên</div>
+                    <div class="timeline-desc">Hướng dẫn, giúp đỡ các thí sinh đi thi THPTQG</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Chim Thị Phương Duy. Bản quyền website thuộc về cá nhân.</p>
+    </footer>
+
+</body>
+</html>
